@@ -27,8 +27,15 @@ public class Algebra {
 	public static int plus(int x1, int x2) {
 		
 		int addNum = x1;
+		int currentNum = x2;
 
-		for (int i = 0; i < x2; i ++) {
+			if (x2 < 0) {
+
+			currentNum = -1 * x2;
+
+		}
+
+		for (int i = 0; i < currentNum; i ++) {
 
 			addNum ++;
 
@@ -41,8 +48,15 @@ public class Algebra {
 	public static int minus(int x1, int x2) {
 
 		int minusNum = x1;
+		int currentNum = x2;
 
-		for (int i = 0; i < x2; i ++) {
+		if (x2 < 0) {
+
+			currentNum = -1 * x2;
+
+		}
+
+		for (int i = 0; i < currentNum; i ++) {
 
 			minusNum --;
 
