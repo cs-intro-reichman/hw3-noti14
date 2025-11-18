@@ -9,7 +9,7 @@ public class Algebra {
 	    System.out.println(plus(-5,-3));   // 2 + 3
 	    System.out.println(minus(7,2));  // 7 - 2
    		System.out.println(minus(-5,-3));  // 2 - 7
- 		System.out.println(times(3,4));  // 3 * 4
+ 		System.out.println(times(-2,-4));  // 3 * 4
    		System.out.println(plus(2,times(4,2)));  // 2 + 4 * 2
    		System.out.println(pow(5,3));      // 5^3
    		System.out.println(pow(3,5));      // 3^5
@@ -91,20 +91,31 @@ public class Algebra {
 	public static int times(int x1, int x2) {
 
 		int currentNum = x1;
-		int x2length = x2;
+		int isX2 = x2;
+		int isX1 = x1;
 
 		if (x2 < 0) {
 
-			x2length = x2 * -1;
+			isX2 = x2 * -1;
 
 		}
+
+		if (x1 < 0) {
+
+			isX1 = x1 * -1;
+
+		}
+
+
+		for (int i = 1; i < isX2; i ++) {
 		
+			currentNum = plus(isX1, isX1);
 
-		for (int i = 1; i < x2length; i ++) {
-		
+		}
 
-		currentNum =	plus(currentNum, x1);
+		if (x1 == 0 || x2 == 0) {
 
+			currentNum = 0;
 
 		}
 
