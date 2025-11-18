@@ -91,8 +91,16 @@ public class Algebra {
 	public static int times(int x1, int x2) {
 
 		int currentNum = x1;
+		int x2length = x2;
 
-		for (int i = 1; i < x2; i ++) {
+		if (x2 < 0) {
+
+			x2length = x2 * -1;
+
+		}
+		
+
+		for (int i = 1; i < x2length; i ++) {
 		
 
 		currentNum =	plus(currentNum, x1);
