@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /** Functions for checking if a given string is an anagram. */
 public class Anagram {
 	public static void main(String args[]) {
@@ -28,22 +30,93 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		// Replace the following statement with your code
-		return false;
+		
+		int currentCharAp = 0;
+		int strTwoCharAp = 0;
+		char currentChar;
+		boolean isItAnagram = false;
+
+		for (int i = 0; i < str1.length(); i ++) {
+
+			currentChar = str1.charAt(i);
+			for (int j = 0; j < str1.length(); j ++) {
+
+				if (currentChar == str1.charAt(j)) {
+
+					currentCharAp ++;
+
+				}
+
+			}
+
+			for (int k = 0; k < str2.length(); k ++) {
+
+			
+				if (currentChar == str2.charAt(k)) {
+
+					strTwoCharAp ++;
+
+				}
+
+			}
+
+			if (currentCharAp == strTwoCharAp) {
+
+				isItAnagram = true;
+
+			}
+
+		}
+		return isItAnagram;
 	}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
-		// Replace the following statement with your code
-		return "";
+		char currentChar;
+		String newStr = "";
+		for (int i = 0; i < str.length(); i ++) {
+
+			currentChar = str.charAt(i);
+			if (Character.isUpperCase(currentChar)) {
+
+				currentChar = Character.toLowerCase(currentChar);
+				newStr = newStr + currentChar;
+
+			} else if (Character.isLowerCase(currentChar)) {
+
+				newStr = newStr + currentChar;
+
+			}
+
+		}
+		return newStr;
 	} 
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
-		// Replace the following statement with your code
-		return "";
+
+		String anagram = "";
+		double rnd = Math.random();
+		int position = (int)(rnd * str.length());
+		char currentChar = str.charAt(position);
+		
+		for (int i = 0; i < str.length() + 1; i ++) {
+
+			String first = str.substring(0, position);
+			String second = str.substring(position + 1, str.length());
+
+			anagram = currentChar + first + second;
+
+		}
+
+		rnd = Math.random();
+	    position = (int)(rnd * str.length());
+	    currentChar = str.charAt(position);
+
+		
+		return anagram;
 	}
 }

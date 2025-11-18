@@ -25,43 +25,128 @@ public class Algebra {
 
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		
+		int addNum = x1;
+
+		for (int i = 0; i < x2; i ++) {
+
+			addNum ++;
+
+		}
+
+		return addNum;
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+
+		int minusNum = x1;
+
+		for (int i = 0; i < x2; i ++) {
+
+			minusNum --;
+
+		}
+
+		return minusNum;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+
+		int currentNum = x1;
+
+		for (int i = 1; i < x2; i ++) {
+		
+
+		currentNum =	plus(currentNum, x1);
+
+
+		}
+
+
+		return currentNum;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
-		// Replace the following statement with your code
-		return 0;
+
+		int currentNum = x;
+
+		if (n >= 0) {
+
+			for (int i = 1; i < n; i ++) {
+
+				currentNum = times(currentNum, x);
+
+			}
+			
+
+		} 
+
+	
+		return currentNum;	
+		
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		
+		int currentNum = x1;
+		int count = 0;
+
+		while (currentNum != 0 && currentNum >= x2 ) {
+
+			currentNum = minus(currentNum, x2);
+			
+			count ++;
+			
+		}
+
+		return count;
+		
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		
+		int currentNum = x2;
+		int count = 0;
+
+		while (currentNum <= x1) {
+
+			currentNum = plus(currentNum, x2);
+			count ++;
+			
+		}
+
+
+		return count;
 	}	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
-		// Replace the following statement with your code
-		return 0;
+		
+		int currentNum = 1;
+		int beforePluse = 0;
+		int isX = 0;
+
+		while( isX != x ) {
+			
+			isX = times(currentNum, currentNum);
+
+			beforePluse = currentNum;
+
+			currentNum = plus(currentNum, 1);
+
+			if (isX > x) {
+
+				return beforePluse;
+
+			}
+
+		}
+		
+		return beforePluse;
 	}	  	  
 }
