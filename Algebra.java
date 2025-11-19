@@ -114,15 +114,11 @@ public class Algebra {
 			
 		}
 
-		if ((isX1Neg && isX2Neg) || ((isX1Neg = false) && (isX2Neg = false ))) {
-
-			return finalResult;
-			
-		} else {
-
+		if (isX1Neg != isX2Neg) {
 			return minus(0, finalResult);
-
 		}
+
+		return finalResult;
 
 		
 	}
@@ -177,22 +173,20 @@ public class Algebra {
 		int finalResult = 0;
 		int currentNum = absolutX1;
 
-		while (currentNum >= absolutX1) {
+		while (currentNum >= absolutX2) {
+
+			if(absolutX2 == 0) return 0;
 
 			currentNum = minus(currentNum, absolutX2);
 			finalResult ++;
 			
 		}
 
-		if ((isX1Neg && isX2Neg) || ((isX1Neg = false) && (isX2Neg = false ))) {
-
-			return finalResult;
-			
-		} else {
-
+			if (isX1Neg != isX2Neg) {
 			return minus(0, finalResult);
-
 		}
+
+		return finalResult;
 	}
 
 	// Returns x1 % x2
