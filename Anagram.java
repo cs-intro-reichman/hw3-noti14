@@ -50,7 +50,7 @@ public class Anagram {
 			char b = newString2.charAt(l);
 			if (b >= 'a' && b <= 'z'){
 
-				cleanStr2 = cleanStr1 + b;
+				cleanStr2 = cleanStr2 + b;
 
 			}
 		}
