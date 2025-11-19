@@ -31,6 +31,49 @@ public class Anagram {
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
 		
+		if (str1 == null || str2 == null) {
+			return false;
+		}
+		String newString1 = str1.toLowerCase();
+		String newString2 = str2.toLowerCase();
+
+		if (newString1.length() != newString2.length()) {
+			return false;
+		}
+
+		if(newString1.length() == 0) {
+			return true;
+		}
+
+		for (int i = 0; i < newString1.length(); i++) {
+
+			char currentChar = newString1.charAt(i);
+			boolean found = false;
+
+			for (int j = 0; j < newString2.length(); j ++) {
+
+				if(currentChar == newString2.charAt(j)) {
+
+					String partBefore = newString2.substring(0, j);
+					String partAfter = newString2.substring(j + 1);
+
+					newString2 = partBefore + partAfter;
+
+					found = true;
+
+					break;
+
+				}
+
+			}
+
+			if(!found) {
+				return false;
+			} 
+
+			return newString2.length() == 0;
+		}
+
 		int currentCharAp = 0;
 		int strTwoCharAp = 0;
 		char currentChar;
