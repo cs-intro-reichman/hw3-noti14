@@ -26,62 +26,52 @@ public class Algebra {
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
 		
-		int addNum = x1;
-		int currentNum = x2;
+		int plusNum = x1;
+		int count = x2;
 
-			if (x2 < 0) {
+		if (count > 0) {
+			while (count != 0) {
 
-			currentNum = -1 * x2;
-
+				plusNum ++;
+				count --;
+				
+			}
 		}
 
-		for (int i = 0; i < currentNum; i ++) {
+		else if (count < 0) {
+			while (count != 0) {
 
-				if (x2 < 0) {
-
-			addNum --;
-
-		} else {
-
-			addNum ++;
-
+				plusNum --;
+				count ++;
+				
+			}
 		}
 
-			
-
-		}
-
-		return addNum;
+		return plusNum;
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
 
 		int minusNum = x1;
-		int currentNum = x2;
+		int count = x2;
 
-		if (x2 < 0) {
+		if (count > 0) {
+			while (count != 0) {
 
-			currentNum = -1 * x2;
+				minusNum --;
+				count --;
 
-		}
-
-		for (int i = 0; i < currentNum; i ++) {
-
-
-			if (x2 < 0) {
-
-			minusNum ++;
-
-		} else {
-
-			minusNum --;
+			}
 
 		}
-			
 
-
-
+		else if (count < 0) {
+			while (count != 0) {
+				
+				minusNum ++;
+				count ++;
+			}
 		}
 
 		return minusNum;
@@ -90,118 +80,161 @@ public class Algebra {
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 
-		int currentNum = x1;
-		int isX2 = x2;
-		int isX1 = x1;
+		int absolutX1 = x1;
+		int absolutX2 = x2;
+		boolean isX1Neg = false;
+		boolean isX2Neg = false;
 
-		if (x2 < 0) {
+		if (x1 == 0 || x2 == 0) {
 
-			isX2 = x2 * -1;
+			return 0;
 
 		}
 
 		if (x1 < 0) {
 
-			isX1 = x1 * -1;
+			absolutX1 = minus(0, x1);
+			isX1Neg = true;
 
 		}
 
+		if (x2 < 0) {
 
-		for (int i = 1; i < isX2; i ++) {
+			absolutX2 = minus(0, x2);
+			isX2Neg = true;
+
+		}
+
+		int finalResult = 0;
+		int count = absolutX2;
+		while (count != 0) {
+
+			finalResult = plus(finalResult, absolutX1);
+			count --;
+			
+		}
+
+		if ((isX1Neg && isX2Neg) || ((isX1Neg = false) && (isX2Neg = false ))) {
+
+			return finalResult;
+			
+		} else {
+
+			return minus(0, finalResult);
+
+		}
+
 		
-			currentNum = plus(isX1, isX1);
-
-		}
-
-		if (x1 == 0 || x2 == 0) {
-
-			currentNum = 0;
-
-		}
-
-
-		return currentNum;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
 
-		int currentNum = x;
+		if (n < 0){
+			return 0;
+		}
 
-		if (n >= 0) {
+		if (n == 0) {
+			return 1;
+		}
 
-			for (int i = 1; i < n; i ++) {
+		int finalResult = 1;
+		int count = n;
 
-				currentNum = times(currentNum, x);
+		while (count != 0) {
 
-			}
+			finalResult = times(finalResult, x);
+			count --;
 			
+		}
 
-		} 
-
-	
-		return currentNum;	
+		return finalResult;
 		
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
 		
-		int currentNum = x1;
-		int count = 0;
+		int absolutX1 = x1;
+		int absolutX2 = x2;
+		boolean isX1Neg = false;
+		boolean isX2Neg = false;
 
-		while (currentNum != 0 && currentNum >= x2 ) {
+		if (x1 < 0) {
 
-			currentNum = minus(currentNum, x2);
-			
-			count ++;
+			absolutX1 = minus(0, x1);
+			isX1Neg = true;
 			
 		}
 
-		return count;
+		if (x2 < 0) {
+
+			absolutX2 = minus(0, x2);
+			isX2Neg = true;
+
+		}
 		
+		int finalResult = 0;
+		int currentNum = absolutX1;
+
+		while (currentNum >= absolutX1) {
+
+			currentNum = minus(currentNum, absolutX2);
+			finalResult ++;
+			
+		}
+
+		if ((isX1Neg && isX2Neg) || ((isX1Neg = false) && (isX2Neg = false ))) {
+
+			return finalResult;
+			
+		} else {
+
+			return minus(0, finalResult);
+
+		}
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
 		
-		int currentNum = x2;
-		int count = 0;
-
-		while (currentNum <= x1) {
-
-			currentNum = plus(currentNum, x2);
-			count ++;
-			
+		if (x2 == 0) {
+			return x1;
 		}
 
+		int quot = div(x1, x2);
+		int prod = times(quot, x2);
 
-		return count;
+		int remain = minus(x1, prod);
+
+		return remain;
 	}	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
 		
-		int currentNum = 1;
-		int beforePluse = 0;
-		int isX = 0;
+		if (x < 0) {
+			return 0;
+		}
+		 int finalResult = 0;
+		 int odd = 1;
 
-		while( isX != x ) {
-			
-			isX = times(currentNum, currentNum);
+		 while (x >= 0) {
 
-			beforePluse = currentNum;
+			int newNm = minus(x, odd);
 
-			currentNum = plus(currentNum, 1);
+			if(newNm < 0) {
 
-			if (isX > x) {
-
-				return beforePluse;
-
+				break;
 			}
 
-		}
-		
-		return beforePluse;
+			x = newNm;
+			finalResult ++;
+
+			odd = plus(odd, 2);
+			
+		 }
+
+		 return finalResult;
 	}	  	  
 }
