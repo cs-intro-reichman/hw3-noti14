@@ -71,46 +71,10 @@ public class Anagram {
 				return false;
 			} 
 
-			return newString2.length() == 0;
-		}
-
-		int currentCharAp = 0;
-		int strTwoCharAp = 0;
-		char currentChar;
-		boolean isItAnagram = false;
-
-		for (int i = 0; i < str1.length(); i ++) {
-
-			currentChar = str1.charAt(i);
-			for (int j = 0; j < str1.length(); j ++) {
-
-				if (currentChar == str1.charAt(j)) {
-
-					currentCharAp ++;
-
-				}
-
-			}
-
-			for (int k = 0; k < str2.length(); k ++) {
-
 			
-				if (currentChar == str2.charAt(k)) {
-
-					strTwoCharAp ++;
-
-				}
-
-			}
-
-			if (currentCharAp == strTwoCharAp) {
-
-				isItAnagram = true;
-
-			}
-
 		}
-		return isItAnagram;
+		return newString2.length() == 0;
+
 	}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
