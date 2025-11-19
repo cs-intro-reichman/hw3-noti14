@@ -35,29 +35,47 @@ public class Anagram {
 			return false;
 		}
 		String newString1 = str1.toLowerCase();
-		String newString2 = str2.toLowerCase();
+		String cleanStr1 = "";
+		for (int k =0; k < newString1.length(); k ++) {
+			char a = newString1.charAt(k);
+			if (a >= 'a' && a <= 'z'){
 
-		if (newString1.length() != newString2.length()) {
+				cleanStr1 = cleanStr1 + a;
+
+			}
+		}
+		String newString2 = str2.toLowerCase();
+		String cleanStr2 = "";
+		for (int l = 0; l < newString2.length(); l++) {
+			char b = newString2.charAt(l);
+			if (b >= 'a' && b <= 'z'){
+
+				cleanStr2 = cleanStr1 + b;
+
+			}
+		}
+
+		if (cleanStr1.length() != cleanStr2.length()) {
 			return false;
 		}
 
-		if(newString1.length() == 0) {
+		if(cleanStr1.length() == 0) {
 			return true;
 		}
 
-		for (int i = 0; i < newString1.length(); i++) {
+		for (int i = 0; i < cleanStr1.length(); i++) {
 
-			char currentChar = newString1.charAt(i);
+			char currentChar = cleanStr1.charAt(i);
 			boolean found = false;
 
-			for (int j = 0; j < newString2.length(); j ++) {
+			for (int j = 0; j < cleanStr2.length(); j ++) {
 
-				if(currentChar == newString2.charAt(j)) {
+				if(currentChar == cleanStr2.charAt(j)) {
 
-					String partBefore = newString2.substring(0, j);
-					String partAfter = newString2.substring(j + 1);
+					String partBefore = cleanStr2.substring(0, j);
+					String partAfter = cleanStr2.substring(j + 1);
 
-					newString2 = partBefore + partAfter;
+					cleanStr2 = partBefore + partAfter;
 
 					found = true;
 
@@ -73,8 +91,9 @@ public class Anagram {
 
 			
 		}
-		return newString2.length() == 0;
 
+		return cleanStr2.length() == 0;
+		
 	}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
